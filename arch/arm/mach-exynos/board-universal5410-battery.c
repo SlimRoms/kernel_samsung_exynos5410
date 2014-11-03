@@ -201,9 +201,9 @@ static bool sec_bat_check_jig_status(void)
 
 }
 
-int mhl_class_usb = 300;
-int mhl_class_500 = 400;
-int mhl_class_900 = 700;
+int mhl_class_usb = 1000;
+int mhl_class_500 = 1000;
+int mhl_class_900 = 1000;
 int mhl_class_1500 = 1300;
 
 static int sec_bat_get_cable_from_extended_cable_type(

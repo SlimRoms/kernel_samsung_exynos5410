@@ -48,7 +48,9 @@
 #include "pvr_debug.h"
 
 #include "s3c_lcd.h"
+#if !defined(CONFIG_FB_EXYNOS_FIMD_SYSMMU_DISABLE)
 #define S3C_DC_IS_PHYS_DISCONTIG
+#endif
 #if defined(S3C_DC_IS_PHYS_DISCONTIG)
 #include "s3c_fb.h"
 #endif

@@ -373,9 +373,6 @@ IMG_VOID PVRSRVResManDisconnect(PRESMAN_CONTEXT psResManContext,
 		FreeResourceByCriteria(psResManContext, RESMAN_CRITERIA_RESTYPE, RESMAN_TYPE_BUFFERCLASS_DEVICE, 0, 0, IMG_TRUE);
 	}
 
-	/* Ensure that there are no resources left */
-	/* PVR_ASSERT(psResManContext->psResItemList == IMG_NULL); S.LSI remove the assert it is just leak */
-
 	/* Remove the context struct from the list */
 	List_RESMAN_CONTEXT_Remove(psResManContext);
 

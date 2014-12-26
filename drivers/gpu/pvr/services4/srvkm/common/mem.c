@@ -135,7 +135,7 @@ PVRSRVFreeSharedSysMemoryKM(PVRSRV_KERNEL_MEM_INFO *psKernelMemInfo)
 		eError = ResManFreeResByPtr(psKernelMemInfo->sMemBlk.hResItem, CLEANUP_WITH_POLL);
 		if(eError != PVRSRV_OK)
 		{
-			PVR_DPF((PVR_DBG_ERROR, "PVRSRVFreeSharedSysMemoryKM: ResManFreeResByPtr failed %d",eError));
+			PVR_DPF((PVR_DBG_ERROR, "PVRSRVFreeSharedSysMemoryKM: ResManFreeResByPtr failed %d", eError));
 			PVR_DPF((PVR_DBG_ERROR, "ResManFreeResByPtr: hResItem 0x%x", (unsigned int)psKernelMemInfo->sMemBlk.hResItem));
 		}
 	}
@@ -144,7 +144,7 @@ PVRSRVFreeSharedSysMemoryKM(PVRSRV_KERNEL_MEM_INFO *psKernelMemInfo)
 		eError = FreeSharedSysMemCallBack(psKernelMemInfo, 0, CLEANUP_WITH_POLL);
 		if(eError != PVRSRV_OK)
 		{
-			PVR_DPF((PVR_DBG_ERROR, "PVRSRVFreeSharedSysMemoryKM: FreeSharedSysMemCallBack failed %d",eError));
+			PVR_DPF((PVR_DBG_ERROR, "PVRSRVFreeSharedSysMemoryKM: FreeSharedSysMemCallBack failed %d", eError));
 			PVR_DPF((PVR_DBG_ERROR, "FreeSharedSysMemCallBack: psKernelMemInfo 0x%x", (unsigned int)psKernelMemInfo));
 		}
 	}

@@ -24,6 +24,9 @@
 #include <linux/mfd/max77803.h>
 #include <linux/mfd/max77803-private.h>
 
+#define ceil(x, y) \
+        ({ unsigned long __x = (x), __y = (y); (__x + __y - 1) / __y; })
+
 #define TEST_MODE_TIME 10000
 
 static unsigned long pwm_val = 50; /* duty in percent */
@@ -279,7 +282,7 @@ ssize_t pwm_value_store(struct device *dev,
 
 	pr_info("[VIB] %s: pwm_val=%lu\n", __func__, pwm_val);
 
-	pwm_duty = (pwm_val * 18525) / 100 + 18525;
+	pwm_duty = ceil((pwm_val * 18525), 100) + 18525;
 
 	/* make sure new pwm duty is in range */
 	if(pwm_duty > 37050)

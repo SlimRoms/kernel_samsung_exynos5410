@@ -134,7 +134,7 @@ static void get_lcd_size(unsigned int *xres, unsigned int *yres)
 	*yres |= (cfg & VIDTCON2_LINEVAL_E_MASK) ? (1 << 11) : 0;	/* 11 is MSB */
 }
 
-static void mdnie_update(struct mdnie_info *mdnie, u8 force);
+void mdnie_update(struct mdnie_info *mdnie, u8 force);
 
 int s3c_mdnie_set_size(void)
 {
@@ -239,7 +239,7 @@ static void mdnie_update_sequence(struct mdnie_info *mdnie, struct mdnie_tuning_
 		mdnie_send_sequence(mdnie, table->sequence);
 }
 
-static void mdnie_update(struct mdnie_info *mdnie, u8 force)
+void mdnie_update(struct mdnie_info *mdnie, u8 force)
 {
 	struct mdnie_tuning_info *table = NULL;
 

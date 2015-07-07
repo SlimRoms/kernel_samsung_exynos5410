@@ -96,6 +96,8 @@ extern struct mdnie_info *g_mdnie;
 int s3c_mdnie_hw_init(void);
 int s3c_mdnie_set_size(void);
 
+void mdnie_update(struct mdnie_info *mdnie, u8 force);
+
 void init_intercept_control(struct kobject *kobj);
 unsigned short mdnie_reg_hook(unsigned short reg, unsigned short value);
 unsigned short *mdnie_sequence_hook(unsigned short *seq);

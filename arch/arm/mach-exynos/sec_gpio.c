@@ -38,57 +38,6 @@ static unsigned int log_en = 0;
 module_param_named(log_en, log_en, uint, 0644);
 
 extern unsigned int s3c_gpio_getpin(unsigned int pin);
-static void sec_debug_show_sleep_gpio(u32 gpio, u32 cfg)
-{
-	if (cfg == S3C_GPIO_SLP_PREV) {
-		if (!!s3c_gpio_getpin(gpio)) {
-			printk(KERN_INFO "gpio-prev:%d=%d\n", gpio, !!s3c_gpio_getpin(gpio));
-		}
-	}
-}
-
-void sec_debug_show_gpio(void)
-{
-	u32 i;
-	u32 cfg, pull, dat;
-
-	for (i = EXYNOS5410_GPJ0(0); i <= EXYNOS5410_GPV4(1); i++) {
-		cfg = s3c_gpio_getcfg(i) & 0xF;
-		pull = s3c_gpio_getpull(i);
-		dat = !!s3c_gpio_getpin(i);
-
-		if (i >= EXYNOS5410_GPX0(0) && i <= EXYNOS5410_GPX3(7)) {
-			if (cfg == S3C_GPIO_OUTPUT && dat == 1)
-				printk(KERN_INFO "gpio-output:%d=%d\n", i, dat);
-		}
-		/* Detect abnormal state of gpio */
-		if (cfg == S3C_GPIO_INPUT && pull == S3C_GPIO_PULL_DOWN && dat == 1)
-			printk(KERN_INFO "gpio-error1:%d=%d\n", i, dat);
-		if (cfg == S3C_GPIO_INPUT && pull == S3C_GPIO_PULL_UP && dat == 0)
-			printk(KERN_INFO "gpio-error2:%d=%d\n", i, dat);
-	}
-
-	if (!log_en)
-		return;
-
-	printk(KERN_INFO "====================\n"); {
-	char *cfg_str[] = {"IN ", "OUT", "SFN"};
-	char *pull_str[] = {"NONE", "DOWN", "RSV ", "UP  "};
-
-	for (i = EXYNOS5410_GPJ0(0); i <= EXYNOS5410_GPV4(1); i++) {
-		cfg = s3c_gpio_getcfg(i) & 0xF;
-		pull = s3c_gpio_getpull(i);
-		dat = !!s3c_gpio_getpin(i);
-
-		printk(KERN_INFO "gpio-%03d:%s-%s-%d", i,
-			cfg_str[cfg>2?2:cfg], pull_str[pull>3?2:pull], dat);
-	}
-
-	printk(KERN_INFO "====================\n"); }
-}
-#else
-static inline void sec_debug_show_sleep_gpio(u32 gpio, u32 cfg) {}
-inline void sec_debug_show_gpio(void) {}
 #endif
 
 struct sec_gpio_table_info sec_gpio_table_info;
@@ -103,7 +52,6 @@ static void config_sleep_gpio_table(int array_size,
 		gpio = gpio_table[i][0];
 		SEC_GPIO_SET_PD_CFG(gpio, gpio_table[i][1]);
 		SEC_GPIO_SET_PD_PULL(gpio, gpio_table[i][2]);
-		sec_debug_show_sleep_gpio(gpio, gpio_table[i][1]);
 	}
 }
 

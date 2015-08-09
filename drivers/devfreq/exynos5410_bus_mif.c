@@ -34,7 +34,6 @@
 
 #include "noc_probe.h"
 #include "exynos5410_volt_ctrl.h"
-#include <mach/sec_debug.h>
 
 #ifdef CONFIG_ASV_MARGIN_TEST
 static int set_mif_freq = 0;
@@ -580,10 +579,6 @@ static int exynos5_mif_busfreq_target(struct device *dev,
 
 		exynos5_mif_bpll_transition_notify(&info, MIF_DEVFREQ_PRECHANGE);
 
-		sec_debug_aux_log(SEC_DEBUG_AUXLOG_CPU_CLOCK_SWITCH_CHANGE,
-			"[MIF] old:%7d new:%7d",
-			old_freq, freq);
-
 		exynos5_mif_set_freq(freq);
 		exynos5_mif_bpll_transition_notify(&info, MIF_DEVFREQ_POSTCHANGE);
 
@@ -594,10 +589,6 @@ static int exynos5_mif_busfreq_target(struct device *dev,
 			exynos5_clkm_gate(false);
 
 		exynos5_mif_bpll_transition_notify(&info, MIF_DEVFREQ_PRECHANGE);
-
-		sec_debug_aux_log(SEC_DEBUG_AUXLOG_CPU_CLOCK_SWITCH_CHANGE,
-			"[MIF] old:%7d new:%7d",
-			old_freq, freq);
 
 		exynos5_mif_set_freq(freq);
 		exynos5_mif_bpll_transition_notify(&info, MIF_DEVFREQ_POSTCHANGE);

@@ -67,7 +67,6 @@ static struct pm_qos_request exynos5_mif_qos;
 static struct pm_qos_request exynos5_int_qos;
 #endif
 
-#include <mach/sec_debug.h>
 #ifdef CONFIG_FB_S5P_MDNIE
 #include <plat/regs-mdnie.h>
 #include <plat/regs-ielcd.h>
@@ -4277,13 +4276,6 @@ static int __devinit s3c_fb_probe(struct platform_device *pdev)
 
 	pm_stay_awake(sfb->dev);
 	dev_warn(sfb->dev, "pm_stay_awake");
-
-	if (win == sfb->pdata->default_win) {
-		sec_getlog_supply_fbinfo((void *)fbinfo->fix.smem_start,
-			fbinfo->var.xres,
-			fbinfo->var.yres,
-			fbinfo->var.bits_per_pixel, 3);
-	}
 
 	dev_info(sfb->dev, "window %d: fb %s\n", default_win, fbinfo->fix.id);
 

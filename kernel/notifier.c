@@ -5,7 +5,6 @@
 #include <linux/rcupdate.h>
 #include <linux/vmalloc.h>
 #include <linux/reboot.h>
-#include <mach/sec_debug.h>
 
 /*
  *	Notifier list for kernel code which wants to be called

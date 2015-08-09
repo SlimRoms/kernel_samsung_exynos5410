@@ -30,10 +30,6 @@
 #include <linux/clk.h>
 #include <linux/cpu.h>
 
-#ifdef CONFIG_SEC_DEBUG
-#include <mach/sec_debug.h>
-#endif
-
 /* PCLK(=PERIR=ACLK_100)/256/128 (~3200:1s) */
 #define TPS 3200
 #if defined(CONFIG_MACH_P4) && defined(CONFIG_TARGET_LOCALE_USA)

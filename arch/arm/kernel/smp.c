@@ -43,8 +43,6 @@
 #include <asm/localtimer.h>
 #include <asm/smp_plat.h>
 
-#include <mach/sec_debug.h>
-
 /*
  * as from 2.5, kernels no longer have an init_tasks structure
  * so we need some other way of telling a new secondary core
@@ -514,7 +512,6 @@ static void ipi_cpu_stop(unsigned int cpu)
 	    system_state == SYSTEM_RUNNING) {
 		raw_spin_lock(&stop_lock);
 		printk(KERN_CRIT "CPU%u: stopping\n", cpu);
-		sec_debug_save_context();
 		dump_stack();
 		raw_spin_unlock(&stop_lock);
 	}
@@ -599,8 +596,6 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 	if (ipinr >= IPI_TIMER && ipinr < IPI_TIMER + NR_IPI)
 		__inc_irq_stat(cpu, ipi_irqs[ipinr - IPI_TIMER]);
 
-	sec_debug_irq_log(ipinr, do_IPI, 1);
-
 	switch (ipinr) {
 	case IPI_PING:
 		break;
@@ -642,8 +637,6 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 		       cpu, ipinr);
 		break;
 	}
-
-	sec_debug_irq_log(ipinr, do_IPI, 2);
 
 	set_irq_regs(old_regs);
 }

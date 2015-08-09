@@ -25,7 +25,6 @@
 #include <linux/delay.h>
 
 #include "coresight.h"
-#include <mach/sec_debug.h>
 
 #define etb_writel(etb, val, off)	__raw_writel((val), etb.base + off)
 #define etb_readl(etb, off)		__raw_readl(etb.base + off)
@@ -351,11 +350,6 @@ static int __devinit etb_probe(struct platform_device *pdev)
 {
 	int ret;
 	struct resource *res;
-
-	if (!sec_debug_level.en.kernel_fault) {
-		pr_info("%s: debug level is low\n", __func__);
-		return -ENODEV;
-	}
 
 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!res) {

@@ -29,7 +29,6 @@
 #include <linux/async.h>
 #include <linux/suspend.h>
 #include <linux/timer.h>
-#include <mach/sec_debug.h>
 #include "../base.h"
 #include "power.h"
 

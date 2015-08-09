@@ -160,8 +160,6 @@ struct s5p_ehci_hcd_stub {
 	struct clk *clk;
 	int power_on;
 };
-/* for EHCI register dump */
-struct dump_ehci_regs sec_debug_ehci_regs;
 
 #define pr_hcd(s, r) printk(KERN_DEBUG "hcd reg(%s):\t 0x%08x\n", s, r)
 static void print_ehci_regs(struct dump_ehci_regs *base)
@@ -194,7 +192,6 @@ void debug_ehci_reg_dump(struct device *hdev)
 {
 	struct s5p_ehci_hcd_stub *s5p_ehci = dev_get_drvdata(hdev);
 	struct usb_hcd *hcd = s5p_ehci->hcd;
-	char *buf = (char *)&sec_debug_ehci_regs;
 	pr_info("%s\n", __func__);
 	pr_info("EHCI %s, %s\n", dev_driver_string(hdev), dev_name(hdev));
 

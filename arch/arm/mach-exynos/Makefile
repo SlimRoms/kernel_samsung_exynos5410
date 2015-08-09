@@ -251,9 +251,7 @@ obj-$(CONFIG_SEC_MODEM_J_KTT)		+= board-j-skt-modems.o
 obj-$(CONFIG_SEC_MODEM_J_CTC)		+= board-j-ctc-modems.o
 obj-$(CONFIG_SEC_MODEM_J_CU)		+= board-j-cu-modems.o
 obj-$(CONFIG_MSM_SUBSYSTEM_RESTART)     += subsystem_restart.o
-obj-$(CONFIG_SEC_DEBUG)			+= sec_debug.o sec_getlog.o sec_gaf.o
 obj-$(CONFIG_SEC_WATCHDOG_RESET)	+= sec_watchdog.o
-obj-$(CONFIG_SEC_LOG)			+= sec_log.o
 # Samsung Misc Feature
 obj-$(CONFIG_SEC_MISC)		+= sec_misc.o
 obj-$(CONFIG_CORESIGHT_ETM) += coresight.o coresight-etb.o coresight-tpiu.o coresight-funnel.o coresight-etm.o board-universal5410-coresight.o

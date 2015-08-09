@@ -732,21 +732,9 @@ static void resume_cal_err_func(struct mxt540e_data *data)
 
 #if 0
 #if defined(CONFIG_SHAPE_TOUCH)
-		if (get_sec_debug_level() != 0)
-			printk(KERN_DEBUG
-				"[TSP] id[%d],x=%d,y=%d,z=%d,w=%d,com=%d\n", i,
-				data->fingers[i].x, data->fingers[i].y,
-				data->fingers[i].z, data->fingers[i].w,
-				data->fingers[i].component);
-		else
 			printk(KERN_DEBUG "[TSP] id[%d] status:%d\n", i,
 				data->fingers[i].z);
 #else
-		if (get_sec_debug_level() != 0)
-			printk(KERN_DEBUG "[TSP] id[%d],x=%d,y=%d,z=%d,w=%d\n",
-				i, data->fingers[i].x, data->fingers[i].y,
-				data->fingers[i].z, data->fingers[i].w);
-		else
 			printk(KERN_DEBUG "[TSP] id[%d] status:%d\n", i,
 				data->fingers[i].z);
 #endif

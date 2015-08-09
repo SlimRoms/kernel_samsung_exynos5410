@@ -48,7 +48,6 @@ extern int sec_gpio_init(void);
 
 /* Sleep gpio configuration function */
 extern void sec_config_sleep_gpio_table(void);
-extern void sec_debug_show_gpio(void);
 
 /* Init gpio configuration function */
 extern void sec_config_gpio_table(void);

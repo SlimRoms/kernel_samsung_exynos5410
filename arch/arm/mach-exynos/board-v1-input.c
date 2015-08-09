@@ -25,7 +25,6 @@
 #include <linux/gpio_keys.h>
 #include <linux/regulator/machine.h>
 #include "board-universal5410.h"
-#include <mach/sec_debug.h>
 #include <linux/wacom_i2c.h>
 
 #ifdef CONFIG_TOUCHSCREEN_ATMEL_MXTS
@@ -532,23 +531,19 @@ static struct gpio_keys_button universal5410_button[] = {
 		.gpio = GPIO_nPOWER,
 		.active_low = 1,
 		.wakeup = 1,
-		.isr_hook = sec_debug_check_crash_key,
 	}, {
 		.code = KEY_VOLUMEUP,
 		.gpio = GPIO_VOL_UP,
 		.active_low = 1,
-		.isr_hook = sec_debug_check_crash_key,
 	}, {
 		.code = KEY_VOLUMEDOWN,
 		.gpio = GPIO_VOL_DOWN,
 		.active_low = 1,
-		.isr_hook = sec_debug_check_crash_key,
 	}, {
 		.code = KEY_HOMEPAGE,
 		.gpio = GPIO_KEY_HOME,
 		.active_low = 1,
 		.wakeup = 1,
-		.isr_hook = sec_debug_check_crash_key,
 	},
 };
 

@@ -46,8 +46,6 @@
 #include "board-universal5410-wlan.h"
 #include "include/board-bluetooth-bcm.h"
 
-#include "mach/sec_debug.h"
-
 extern phys_addr_t bootloaderfb_start;
 extern phys_addr_t bootloaderfb_size;
 
@@ -468,13 +466,10 @@ static void __init universal5410_map_io(void)
 	exynos_init_io(NULL, 0);
 	s3c24xx_init_clocks(clk_xusbxti.rate);
 	s3c24xx_init_uarts(universal5410_uartcfgs, ARRAY_SIZE(universal5410_uartcfgs));
-
-	sec_debug_init();
 }
 
 static void __init universal5410_init_early(void)
 {
-	sec_debug_magic_init();
 }
 
 static unsigned int board_rev = 0;

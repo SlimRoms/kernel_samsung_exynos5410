@@ -43,8 +43,6 @@
 #include <linux/interrupt.h>
 #endif
 
-#include <mach/sec_debug.h>
-
 #ifdef CONFIG_KEYBOARD_CYPRESS_TOUCH
 static struct i2c_board_info i2c_devs8_emul[];
 
@@ -929,26 +927,22 @@ static struct gpio_keys_button universal5410_button[] = {
 		.gpio = EXYNOS5410_GPX2(2),
 		.active_low = 1,
 		.wakeup = 1,
-		.isr_hook = sec_debug_check_crash_key,
 		.debounce_interval = 10,
 	}, {
 		.code = KEY_VOLUMEUP,
 		.gpio = EXYNOS5410_GPX0(2),
 		.active_low = 1,
-		.isr_hook = sec_debug_check_crash_key,
 		.debounce_interval = 10,
 	}, {
 		.code = KEY_VOLUMEDOWN,
 		.gpio = EXYNOS5410_GPX0(3),
 		.active_low = 1,
-		.isr_hook = sec_debug_check_crash_key,
 		.debounce_interval = 10,
 	}, {
 		.code = KEY_HOMEPAGE,
 		.gpio = EXYNOS5410_GPX0(5),
 		.active_low = 1,
 		.wakeup = 1,
-		.isr_hook = sec_debug_check_crash_key,
 		.debounce_interval = 10,
 	},
 };

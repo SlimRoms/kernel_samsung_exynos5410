@@ -28,7 +28,6 @@
 #include "logger.h"
 
 #include <asm/ioctls.h>
-#include <mach/sec_debug.h>
 
 #ifndef CONFIG_LOGCAT_SIZE
 #define CONFIG_LOGCAT_SIZE 256
@@ -813,8 +812,6 @@ static int __init logger_init(void)
 		goto out;
 #endif
 
-	sec_getlog_supply_loggerinfo(_buf_log_main, _buf_log_radio,
-				     _buf_log_events, _buf_log_system);
 out:
 	return ret;
 }

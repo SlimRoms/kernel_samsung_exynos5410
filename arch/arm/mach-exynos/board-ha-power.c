@@ -202,6 +202,5 @@ void __init exynos5_universal5410_power_init(void)
 	sec_gpio_init();
 	sec_config_gpio_table();
 	exynos_set_sleep_gpio_table = sec_config_sleep_gpio_table;
-	exynos_debug_show_gpio = sec_debug_show_gpio;
 #endif
 }

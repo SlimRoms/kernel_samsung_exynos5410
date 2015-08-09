@@ -20,7 +20,6 @@
 #include <linux/err.h>
 
 #include "coresight.h"
-#include <mach/sec_debug.h>
 
 #define funnel_writel(funnel, id, val, off)	\
 			__raw_writel((val), funnel.base + (SZ_4K * id) + off)
@@ -170,11 +169,6 @@ static int __devinit funnel_probe(struct platform_device *pdev)
 {
 	int ret;
 	struct resource *res;
-
-	if (!sec_debug_level.en.kernel_fault) {
-		pr_info("%s: debug level is low\n", __func__);
-		return -ENODEV;
-	}
 
 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!res) {

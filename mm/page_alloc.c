@@ -5689,6 +5689,7 @@ static struct trace_print_flags pageflag_names[] = {
 	{1UL << PG_scfslower,		"scfslower"	},
 	{1UL << PG_nocache,		"nocache"	},
 #endif
+	{1UL << PG_readahead,           "PG_readahead"  },
 	{-1UL,				NULL		},
 };
 

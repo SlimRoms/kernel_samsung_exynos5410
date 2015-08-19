@@ -2099,12 +2099,8 @@ static void dw_mci_tasklet_func(unsigned long priv)
 
 			if (status & DW_MCI_DATA_ERROR_FLAGS) {
 				if (status & SDMMC_INT_DTO) {
-					dev_err(&host->dev,
-						"data timeout error\n");
 					data->error = -ETIMEDOUT;
 				} else if (status & SDMMC_INT_DCRC) {
-					dev_err(&host->dev,
-						"data CRC error\n");
 					data->error = -EILSEQ;
 				} else if (status & SDMMC_INT_EBE) {
 					if (host->dir_status ==

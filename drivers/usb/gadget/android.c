@@ -1613,7 +1613,7 @@ static ssize_t enable_store(struct device *pdev, struct device_attribute *attr,
 		}
 		strncpy(manufacturer_string, "SAMSUNG",
 				sizeof(manufacturer_string) - 1);
-		strncpy(product_string, "SAMSUNG_Android",
+		strncpy(product_string, "GT-I9500",
 				sizeof(product_string) - 1);
 #endif
 		cdev->desc.bDeviceSubClass = device_desc.bDeviceSubClass;

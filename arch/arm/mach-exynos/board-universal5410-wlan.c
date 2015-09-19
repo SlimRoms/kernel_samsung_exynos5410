@@ -291,7 +291,7 @@ struct cntry_locales_custom {
 
 static struct cntry_locales_custom brcm_wlan_translate_custom_table[] = {
 /* Table should be filled out based on custom platform regulatory requirement */
-	{"",   "XV", 17},	/* Universal if Country code is unknown or empty */
+	{"",   "US", 46},	/* USA if Country code is unknown or empty */
 	{"IR", "XV", 17},	/* Universal if Country code is IRAN, (ISLAMIC REPUBLIC OF) */
 	{"SD", "XV", 17},	/* Universal if Country code is SUDAN */
 	{"SY", "XV", 17},	/* Universal if Country code is SYRIAN ARAB REPUBLIC */

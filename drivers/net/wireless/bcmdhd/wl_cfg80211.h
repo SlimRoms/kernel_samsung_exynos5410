@@ -625,6 +625,7 @@ struct bcm_cfg80211 {
 	uint8 fbt_key[FBT_KEYLEN];
 #endif
 	bool need_wait_afrx;
+	struct notifier_block netdev_notifier;
 };
 
 
